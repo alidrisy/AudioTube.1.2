@@ -47,7 +47,7 @@ function formatDateRelativeToToday(date) {
   }
 }
 
-function formatNumber(number) {
+export function formatNumber(number) {
   if (isNaN(number)) {
     throw new TypeError("Input must be a number");
   }
@@ -77,10 +77,12 @@ export default async function ytsr(options) {
     type: "video",
     ...options,
   };
+  console.log(options);
+  console.log(params);
 
   try {
     const response = await axios.get(
-      "https://www.googleapis.com/youtube/v3/search",
+      "https://www.youtube.com/youtubei/v3/search",
       { params },
     );
     const videos = response.data.items;
@@ -122,8 +124,8 @@ export default async function ytsr(options) {
 
     return videoInfo;
   } catch (error) {
-    console.error(error);
-    return []; // Handle errors by returning an empty array
+    console.log(error);
+    throw new Error(error.message);
   }
 }
 

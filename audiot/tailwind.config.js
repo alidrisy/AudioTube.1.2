@@ -67,14 +67,23 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        grow: {
+          "0%": { height: "0" },
+          "100%": { height: "100px" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        grow: "grow 0.2s ease-in-out",
       },
       backgroundImage: {
         mapgps:
           "linear-gradient(9deg, #464646 -17%, rgb(4 4 4 / 87%) 50%), url(/src/assets/images/mapgps.jpg)",
+      },
+      fontFamily: {
+        rubik: ["Rubik", "sans-serif"],
+        sans: ["Roboto", "Cairo", "Open Sans", "sans-serif"],
       },
     },
     // screens: {

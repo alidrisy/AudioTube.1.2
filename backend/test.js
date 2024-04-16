@@ -1,5 +1,8 @@
-import VideoController from "./controllers/VideoController";
-VideoController.getDetails().then();
+import SearchController from "./controllers/SearchController";
+
+SearchController.getAll().then();
+// import VideoController from "./controllers/VideoController";
+// VideoController.getDetails().then();
 
 // const axios = require("axios");
 // const apiKey = "AIzaSyCmdtn0ruRWtMmcx4PdXaAILVBrnZ5-lJs"; // Replace with your actual key
