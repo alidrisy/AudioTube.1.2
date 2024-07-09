@@ -10,9 +10,12 @@ const Search = ({
     setVideos,
     error,
     setError,
+    isLoading,
+    setIsLoading,
     search,
     setSearch,
     setCurrentIndex,
+    onClick,
   }) => {
 
     const loadRef = useRef(false)
@@ -22,6 +25,7 @@ const Search = ({
     const getVideos = async () => {
       setVideos([]);
       setError('')
+      setIsLoading(true)
       try{
           const searcedVideos = await axios.get(`http://localhost:5000/api/v1/search/${search}`);
           console.log(searcedVideos.data)
@@ -30,6 +34,8 @@ const Search = ({
       } catch(e) {
         console.log(e)
         setError(e.message)
+      } finally {
+        setIsLoading(false);
       }
     }
   
@@ -42,7 +48,7 @@ const Search = ({
     }, []);
   
     return (
-      <div className="flex flex-col gap-10 justify-evenly">
+      <div className="flex flex-col space-y-10" onClick={onClick} >
           <Filter
             search={search}
             setSearch={setSearch}
@@ -51,6 +57,7 @@ const Search = ({
           <Videos
             videos={videos}
             error={error}
+            isLoading={isLoading}
             setCurrentIndex={setCurrentIndex}
           />
       </div>

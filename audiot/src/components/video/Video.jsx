@@ -11,7 +11,7 @@ import MotionTop from "../motion/MotionTop";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useState } from "react";
 import { Downloader } from "../Downloader";
-// 
+
 
 const Video = ({ video, onClick }) => {
     const [isload, setIsLoad] = useState(false)
@@ -19,8 +19,8 @@ const Video = ({ video, onClick }) => {
 
     return (
         <MotionTop> 
-            <Card className="relative flex flex-col justify-between max-w-[400px] max-[650px]:w-full rounded-3xl sm:h-[520px] flex-grow hover:shadow-xl hover:scale-[1.01]">
-            {!isload && <Skeleton className="h-[220px]  max-[400px]:h-[180px] w-[400px] max-[650pl cursor-pointer" onClick={onClick} /> }
+            <Card className="relative w-full rounded-3xl sm:h-[520px] hover:shadow-xl hover:scale-[1.01]">
+            {!isload && <Skeleton className="h-[220px] w-full rounded-t-3xl max-[650px]:h-[180px] cursor-pointer" onClick={onClick} /> }
             <img
                 className={isload ? "max-[400px]:h-[180px] rounded-t-3xl max-[650px]:w-full cursor-pointer" : "pl-[100vh]"}
                 src={video.thumbnails[video.thumbnails.length - 1].url}

@@ -23,6 +23,7 @@ const MotionTop = ({ children }) => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={variants}
+			className="w-[90%] max-w-[400px]"
         >
             {children}
         </motion.div>

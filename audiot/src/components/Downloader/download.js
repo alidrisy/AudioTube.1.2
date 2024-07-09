@@ -11,6 +11,7 @@ export const downloadVideo = (
 ) => {
   loadId.current = toast.loading("Please wait...", { closeButton: true });
   setOpen(false);
+  console.log(format.id, val.id);
   api
     .get(`download/video/${format.id}/${val.id}`, {
       responseType: "arraybuffer",

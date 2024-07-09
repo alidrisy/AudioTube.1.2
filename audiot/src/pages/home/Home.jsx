@@ -17,9 +17,12 @@ const Home = ({
     setVideos,
     error,
     setError,
+    isLoading,
+    setIsLoading,
     search,
     setSearch,
     setCurrentIndex,
+    onClick,
   }) => {
 
   const loadRef = useRef(false)
@@ -29,6 +32,7 @@ const Home = ({
     setVideos([]);
     setError('')
     setSearch('')
+    setIsLoading(true)
     try{
         const allVideos = await axios.get(`http://localhost:5000/api/v1/catagory/${catagoryId}`);
         console.log(allVideos.data)
@@ -37,6 +41,8 @@ const Home = ({
     } catch(e) {
       console.log(e)
       setError(e.message)
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -48,7 +54,7 @@ const Home = ({
   }, [catagoryId]);
 
   return (
-    <div className="flex flex-col gap-10 justify-evenly">
+    <div className="min-h-[calc(100vh-117px)] w-full max-w-full space-y-10" onClick={onClick}>
         <Filter
           catagoryId={catagoryId}
           setCatagoryId={setCatagoryId}
@@ -59,11 +65,9 @@ const Home = ({
         <Videos
           videos={videos}
           error={error}
+          isLoading={isLoading}
           setCurrentIndex={setCurrentIndex}
         />
-        
-        {/* <Player /> */}
-        {/* <AudioPlayer songs={songs} />  */}
     </div>
   );
 };

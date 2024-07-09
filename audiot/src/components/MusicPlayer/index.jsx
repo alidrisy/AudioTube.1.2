@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
-import { CircleX } from 'lucide-react';
 import Controls from './Controls';
 import Player from './Player';
 import Seekbar from './Seekbar';
@@ -9,6 +8,7 @@ import FakeTrack from './FakeTrack';
 import VolumeBar from './VolumeBar';
 import axios from '@/api';
 import { toast } from 'react-toastify';
+import { X } from 'lucide-react';
 
 const MusicPlayer = ({currentIndex, setCurrentIndex, currentSongs}) => {
 
@@ -33,6 +33,7 @@ const MusicPlayer = ({currentIndex, setCurrentIndex, currentSongs}) => {
         setAppTime(0)
         const video = currentSongs[currentIndex];
         const response = await axios.get(`audios/${video.id}`);
+        console.log(response.data)
         setActiveSong({...response.data, title: video.title, image: video.thumbnails[video.thumbnails.length - 1].url, channelName: video.channel.name});
         setIsActive(true);
       } catch(e) {
@@ -77,9 +78,9 @@ const MusicPlayer = ({currentIndex, setCurrentIndex, currentSongs}) => {
   
   return (
     <div
-      className="hover:relative sm:px-12 px-8 w-full flex items-center justify-between"
+      className="relative px-8 sm:px-12 w-full flex items-center justify-between"
     >
-      <button onClick={() => setCurrentIndex(null)} className='absolute duration-1000 -top-[30px] end-6 bg-gray-500/70 rounded-t-full h-[30px] w-9.5 transition-transform translate-h-0 ease-in-out'><CircleX className='h-9 mt-[0px] w-9' color="black" strokeWidth={1.5} /></button>
+      <button onClick={() => setCurrentIndex(null)} className='absolute top-10 -end-3 sm:-end-5 rounded-full h-fit w-fit'><X size={40} color='white' strokeWidth={1.5} /></button>
       {activeSong ? <Track isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} /> : <FakeTrack />}
       <div className="flex-1 flex flex-col items-center justify-center">
         <Controls

@@ -4,6 +4,7 @@ import ytmux from "../utils/ytmux";
 class DownloadController {
   static getVideo = (req, res) => {
     try {
+      console.log(req.query.url, req.query.quality);
       const quality = req.query.quality;
       const url = req.query.url;
 
@@ -27,6 +28,7 @@ class DownloadController {
   static getAudio = (req, res) => {
     try {
       const url = req.query.url;
+      console.log(req.query.url);
 
       if (!url) {
         return res.status(403).json({ error: "Can't found audio id." });

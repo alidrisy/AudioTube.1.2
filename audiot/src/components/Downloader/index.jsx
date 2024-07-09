@@ -35,7 +35,7 @@ export function Downloader({ videoId }) {
   const [progress, setProgress] = useState(0)
   const { width } = useScreenSize("(min-width: 768px)")
 
-
+  document.onclick
   useEffect(() => {
     const getFormat = async () => {
       try {
@@ -49,7 +49,6 @@ export function Downloader({ videoId }) {
     }
     if (open && !Object.keys(format).length) getFormat();
   }, [open]);
-
 
   useEffect(() => {
     if (toastId.current === null && progress) {
@@ -101,7 +100,7 @@ export function Downloader({ videoId }) {
   }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer  open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <button className="flex justify-center items-center w-10 h-10 sm:w-11 sm:h-11 rounded-full p-1.5 hover:bg-gray-300/90 focus:bg-white mr-2 outline-none"><ArrowDownToLine className="w-full h-full" /></button>
       </DrawerTrigger>

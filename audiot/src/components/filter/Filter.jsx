@@ -16,7 +16,7 @@ const Filter = ({catagoryId, setCatagoryId, data, search, setSearch, getVideos})
   }
 
   return (
-    <div className={data ? "flex flex-col-reverse md:flex-row justify-between px-6 sm:px-8 gap-3 sm:gap-5" : "flex flex-row items-center justify-between px-6 sm:px-8 gap-3 sm:gap-5"}>
+    <div className={data ? "flex max-w-full flex-col-reverse md:flex-row justify-between px-6 sm:px-8 gap-3 sm:gap-5" : "flex flex-row items-center w-full justify-between px-6 sm:px-8 gap-3 max-w-full sm:gap-5"}>
          {data ?
             <div  className="flex">
                 <ul className="flex space-x-3 sm:space-x-5 py-2 text-gray-700 dark:text-gray-200 overflow-x-scroll hide-scrollbar sm:overflow-hidden">
@@ -34,16 +34,16 @@ const Filter = ({catagoryId, setCatagoryId, data, search, setSearch, getVideos})
                 </ul>
             </div> : 
             <button 
-                className="flex justify-center items-center h-10 w-10 -ml-5 mt-[1px] rounded-full hover:bg-gray-200 outline-none"
+                className="flex justify-center items-center p-1 mt-[1px] rounded-full hover:bg-gray-200 outline-none"
                 onClick={() => navigate('/')}
             >
                     <ArrowLeft  size={34} strokeWidth={1.4} color="#2b2b2b" />
                 </button>}
-            <form className="flex h-fit py-2 flex-grow justify-end" onSubmit={handleSubmit} >
+            <form className="flex h-fit py-2 flex-grow justify-end w-full" onSubmit={handleSubmit} >
                 <input
                     type="search"
                     className={data ? "w-full md:max-w-[350px] flex-grow p-2 pl-2 text-gray-900 bg-gray-50 rounded-s-3xl border-y-2 border-l-2 focus:ring-2 focus:outline-none focus:ring-gray-100"
-                    : "w-full max-w-[350px] flex-grow min-w-[95%] p-2 pl-3 text-gray-900 bg-gray-50 rounded-s-3xl border-y-2 border-l-2 focus:ring-2 focus:outline-none focus:ring-gray-100"}
+                    : "w-full flex-grow p-2 pl-3 text-gray-900 bg-gray-50 rounded-s-3xl border-y-2 border-l-2 focus:ring-2 focus:outline-none focus:ring-gray-100"}
                     value={search}
                     onChange={e => setSearch(e.target.value)}
                     placeholder="Search.." 
